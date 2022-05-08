@@ -1,0 +1,72 @@
+﻿@model Softtech.ViewModel.FaultViewModel
+
+@{
+    ViewData["Title"] = "AddFaults";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<div class="row  py-4">
+    <div class="breadcrumb-bar col-md-12">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-12 col-12">
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Students">Student</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Fault Report</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 py-4">
+        <form asp-action="AddFaults" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label>Report Date<span class="text-danger">*</span></label>
+                <input asp-for="ReportDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Room<span class="text-danger">*</span></label>
+                <select asp-for="RoomId" class="form-control" asp-items="ViewBag.RoomId"></select>
+            </div>
+            <div class="form-group">
+                <label>Description<span class="text-danger">*</span></label>
+                <textarea asp-for="Description" style="height: 100px;  max-width: 100%; width: 100%"></textarea>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Upload Proof<span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="zmdi zmdi-account"></i></div>
+                        </div>
+                        <div class="custom-file">
+                            <input asp-for="PdfFile" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+                    <small class="form-text text-muted">Allowed JPG, PNG and PDF. Max size of 2MB</small>
+                </div>
+            </div>
+            <div class="form-group submit-section mt-4">
+                <button type="submit" class="btn btn-primary submit-btn">
+                    Submit
+                </button>
+                <a asp-action="Index" asp-controller="Students" class="btn btn-secondary submit-btn">
+                    <i class="fa fa-reload btn-icon-prepend"></i>
+                    Back
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });</script>
+}

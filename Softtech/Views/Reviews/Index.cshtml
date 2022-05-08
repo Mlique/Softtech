@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Softtech.Models.TblReview>
+
+@{
+    ViewData["Title"] = "ListOfReviews";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <div class="widget review-listing">
+                @foreach (var item in Model)
+                {
+                    <img class="rounded-circle" height="100" width="150" alt="User Image" src="~/profileImage/@Html.DisplayFor(modelItem => item.Student.ImagePath)">
+                    <div class="comment-body pb-4">
+                        <div class="meta-data">
+                            <span class="comment-author">@Html.DisplayFor(modelItem => item.Student.FullName)</span>
+                            <span class="comment-date"></span>
+                            <div class="review-count rating">
+                                @Html.DisplayFor(modelItem => item.Rate)
+                            </div>
+                        </div>
+                        @*<p class="recommended"><i class="far fa-thumbs-up"></i> </p>*@
+                        <p class="comment-content">
+                            @Html.DisplayFor(modelItem => item.Comment)
+                        </p>
+                        <div class="comment-reply">
+                            <a class="comment-btn" asp-action="Edit" asp-route-id="@item.ReviewId">
+                                <i class="fas fa-reply"></i> Reply
+                            </a>
+                            <p class="recommend-btn">
+                                <span>Recommend?</span>
+                                <a href="#" class="like-btn">
+                                    <i class="far fa-thumbs-up"></i> Yes
+                                </a>
+                                <a href="#" class="dislike-btn">
+                                    <i class="far fa-thumbs-down"></i> No
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

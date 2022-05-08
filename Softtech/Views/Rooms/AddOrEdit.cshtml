@@ -1,0 +1,64 @@
+﻿@model Softtech.Models.TblRoom
+
+@{
+    ViewData["Title"] = "Add-Rooms";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="row">
+        <div class="col-sm-12">
+            <h5 class="page-title">Rooms /</h5>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item active">
+                @(Model.RoomId != null ? "Update Details" : "Add Details")</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <p class="card-text">
+                        @(Model.RoomId != null ? "Update room to the list" : "Add room to the list")
+                    </p>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="col-md-12 py-4">
+                    <form asp-action="AddOrEdit">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label>Room No<span class="text-danger">*</span></label>
+                            <input asp-for="RoomNo" class="form-control floating" />
+                        </div>
+                        <div class="form-group">
+                            <label>Room Type <span class="text-danger">*</span></label>
+                            <select asp-for="RoomTypeId" class="form-control floating" >
+                                <option value="" class="option">Select room</option>
+                                <option value="Single Room" class="option">Single Room</option>
+                                <option value="Two Sharing" class="option">Two Sharing</option>
+                                <option value="Three Sharing" class="option">Three Sharing</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Price<span class="text-danger">*</span></label>
+                            <input asp-for="Price" class="form-control floating" />
+                        </div>
+                        <div class="form-group py-3">
+                            <button type="submit" value="Create" class="btn btn-primary">
+                                @(Model.RoomId != null ? "Update" : "Create")
+                            </button>
+                            <a asp-action="ListOfRooms" asp-controller="Rooms" class="btn btn-secondary btn-icon-text">
+                                <i class="fa fa-reload btn-icon-prepend"></i>
+                                Back
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

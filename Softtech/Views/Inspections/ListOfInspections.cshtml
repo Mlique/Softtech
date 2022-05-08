@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Softtech.Models.TblInspection>
+
+@{
+    ViewData["Title"] = "ListOfInspections";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="datatable table table-hover table-center mb-0">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Condition</th>
+                                <th>Comment</th>
+                                <th>Inspection</th>
+                                <th>
+                                    <a asp-action="AddInspections">Add New</a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Condition)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Comment)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.InspectionId)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.InspectionId">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.InspectionId">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.InspectionId">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

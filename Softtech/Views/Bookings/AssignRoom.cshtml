@@ -1,0 +1,138 @@
+﻿@model Softtech.ViewModel.AssignRoomToStudentViewModel
+
+@{
+    ViewData["Title"] = "AssignRoom";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title">Approve</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"></a></li>
+                        <li class="breadcrumb-item active">Assign Room</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @*<div class="profile-header">
+                    <div class="row align-items-center">
+                        <div class="col-auto profile-image">
+                            <a href="#">
+                                <img class="rounded-circle" alt="User Image" src="assets/img/profiles/avatar-01.jpg">
+                            </a>
+                        </div>
+                        <div class="col ml-md-n2 profile-user-info">
+                            <h4 class="user-name mb-0">@Model.Address</h4>
+                            <h6 class="text-muted">@Model.Email</h6>
+                            <div class="user-Location"><i class="fa fa-map-marker"></i> @Model.AddressLine1</div>
+                            <div class="about-text">About Me</div>
+                        </div>
+                    </div>
+                </div>*@
+                <div class="tab-content profile-tab-cont">
+
+                    <div class="tab-pane fade show active" id="per_details_tab">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title d-flex justify-content-between">
+                                            <span>More Details</span>
+                                            @*<a class="edit-link" data-toggle="modal" href="#edit_personal_details"><i class="fa fa-edit mr-1"></i>Edit</a>*@
+                                        </h5>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <dl class="row text-right">
+                                                            <dt class="col-sm-4">
+                                                                <label class="control-label">Booking Date</label>
+                                                            </dt>
+                                                            <dd class="col-sm-5 text-center">
+                                                                <span class="form-control-static">@Html.DisplayFor(model => model.Date)</span>
+                                                            </dd>
+                                                            <dt class="col-sm-4">
+                                                                <label class="control-label">Bursary Name:</label>
+                                                            </dt>
+                                                            <dd class="col-sm-5 text-center">
+                                                                <span class="form-control-static">@Html.DisplayFor(model => model.BursaryName)</span>
+                                                            </dd>
+                                                            <dt class="col-sm-4">
+                                                                <label class="control-label">Year:</label>
+                                                            </dt>
+                                                            <dd class="col-sm-5 text-center">
+                                                                <span class="form-control-static">  @Html.DisplayFor(model => model.Year)</span>
+                                                            </dd>
+                                                        </dl>
+
+                                                        <form asp-action="AssignRoom" method="post" class="form-horizontal" role="form">
+                                                            <div> @Html.ValidationMessage("NotChecked") </div>
+                                                            <input type="hidden" asp-for="BookingId" />
+                                                            <input type="hidden" asp-for="StudentId" />
+
+                                                            <dl class="row text-right">
+                                                                <dt class="col-sm-4">
+                                                                    <label class="control-label">Room Type:</label>
+                                                                </dt>
+                                                                <dd class="col-sm-5 text-center">
+                                                                    <span class="form-control-static">
+                                                                        <select asp-for="RoomTypeId" class="form-control" asp-items="@ViewBag.RoomTypeId">
+                                                                            <option value="" class="option">Select room type</option>
+                                                                        </select>
+                                                                    </span>
+                                                                </dd>
+                                                                <dt class="col-sm-4">
+                                                                    <label class="control-label">Room:</label>
+                                                                </dt>
+                                                                <dd class="col-sm-5 text-center">
+                                                                    <span class="form-control-static">
+                                                                        <select asp-for="RoomId" class="form-control" asp-items="@ViewBag.RoomId">
+                                                                            <option value="" class="option">Select room No</option>
+                                                                        </select>
+                                                                    </span>
+                                                                </dd>
+
+
+                                                                <dt class="col-sm-4">
+                                                                    <label class="control-label">Approve Room:</label>
+                                                                </dt>
+                                                                <dd class="col-sm-5 text-right">
+                                                                    <span class="form-control-static"><input class="ql-size-large" asp-for="Status" id="myCheck" type="checkbox" /></span>
+                                                                </dd>
+
+                                                            </dl>
+                                                            <button type="submit" onclick="checkCheckBox()" class="btn btn-primary submit-btn">
+                                                                Confirm
+                                                            </button>
+                                                            <a asp-action="Index" asp-controller="Bookings" class="btn btn-secondary submit-btn">
+                                                                <i class="fa fa-reload btn-icon-prepend"></i>
+                                                                Back
+                                                            </a>
+                                                            @*<input type="submit"  value="Confirm" class="btn btn-primary btn-lg btn-block">*@
+                                                            <script>
+                                                                function checkCheckBox() {
+                                                                    if (document.getElementById("myCheck").checked == false) {
+                                                                        alert("You haven't confirmed in checkbox!");
+                                                                    }
+                                                                }
+                                                            </script>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+

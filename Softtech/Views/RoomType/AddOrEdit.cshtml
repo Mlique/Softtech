@@ -1,0 +1,53 @@
+﻿@model Softtech.Models.TblRoomType
+
+@{
+    ViewData["Title"] = "AddOrEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="row">
+        <div class="col-sm-12">
+            <h5 class="page-title">Rooms /</h5>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item active">
+                    @(Model.RoomTypeId != null ? "Update Details" : "Add Details")
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <p class="card-text">
+                        @(Model.RoomTypeId != null ? "Update room type to the list" : "Add room type to the list")
+                    </p>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="col-md-12 py-4">
+                    <form asp-action="AddOrEdit">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label>Type Name<span class="text-danger">*</span></label>
+                            <input asp-for="Name" class="form-control floating"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group py-3">
+                            <button type="submit" value="Create" class="btn btn-primary">
+                                @(Model.RoomTypeId != null ? "Update" : "Create")
+                            </button>
+                            <a asp-action="Index" asp-controller="RoomType" class="btn btn-secondary btn-icon-text">
+                                <i class="fa fa-reload btn-icon-prepend"></i>
+                                Back
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

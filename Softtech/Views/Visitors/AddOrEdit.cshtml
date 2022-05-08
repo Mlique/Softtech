@@ -1,0 +1,54 @@
+﻿@model Softtech.ViewModel.VisitorsViewModel
+
+@{
+    ViewData["Title"] = "AddOrEdit";
+    Layout = "~/Views/Shared/_VistorLayout.cshtml";
+}
+
+<div class="col-md-12 py-4">
+    <form asp-action="AddOrEdit" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="form-group">
+            <label>Vistor Name <span class="text-danger">*</span></label>
+            <input asp-for="FullName" class="form-control floating" />
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Time In <span class="text-danger">*</span></label>
+                <input asp-for="TimeIn" class="form-control floating" />
+            </div>
+            <div class="form-group col-md-6">
+                <label>Time Out <span class="text-danger">*</span></label>
+                <input asp-for="TimeOut" class="form-control floating" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Date <span class="text-danger">*</span></label>
+            <input asp-for="Date" class="form-control floating">
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Room Number <span class="text-danger">*</span></label>
+                <select asp-for="RoomNo" class="form-control floating" asp-items="@ViewBag.RoomId">
+                    <option value="" class="option">Select room</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Student <span class="text-danger">*</span></label>
+                <select asp-for="VisiteeName" class="form-control" asp-items="@Model.Students">
+                    <option value="" class="option">Select student visited</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group submit-section mt-4">
+            <button type="submit" class="btn btn-primary submit-btn">
+                Submit
+            </button>
+            <a asp-action="Index" asp-controller="Visitors" class="btn btn-secondary submit-btn">
+                <i class="fa fa-reload btn-icon-prepend"></i>
+                Back
+            </a>
+        </div>
+    </form>
+</div>

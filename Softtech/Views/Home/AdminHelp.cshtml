@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewData["Title"] = "AdminHelp";
+}
+
+<h2>AdminHelp</h2>
+<div class="navBar">
+    <h3 id="helpIcon" data-toggle="modal" data-target="#myModal">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-question-sign pull-right"></span></h3>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h4 class="modal-title" id="myModalLabel">Got some Queries? Let us Help you out</h4>
+                </center>
+            </div>
+            <div class="modal-body">
+
+                <!--Questions-->
+                <div id="accordion" class="panel-group">
+                    <div class="panel panel-info">
+
+                        <a href="#first" data-toggle="collapse" data-parent="#accordion">
+                            <div class="panel-heading">
+
+                                <div class="panel-title">
+                                    Student Bookings?
+                                    <span class="glyphicon glyphicon-menu-down more pull-right"></span>
+                                </div>
+
+                            </div>
+                        </a>
+                        <div class="panel-collapse collapse" id="first">
+                            <div class="panel-body">
+                                <p>Admin clicks the student bookings link when he/she wants to check the recent bookings. They can also use this page to accept or deny the booking made by the student..</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+
+                        <a href="#fourth" data-toggle="collapse" data-parent="#accordion">
+                            <div class="panel-heading">
+
+                                <div class="panel-title">
+                                    Room Checklist?
+                                    <span class="glyphicon glyphicon-menu-down more pull-right"></span>
+                                </div>
+
+                            </div>
+                        </a>
+                        <div class="panel-collapse collapse" id="fourth">
+                            <div class="panel-body">
+                                <p>It is where you can download and check a signed check list.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <a href="#second" data-toggle="collapse" data-parent="#accordion">
+                            <div class="panel-heading">
+
+                                <div class="panel-title">
+                                    Student Payments?
+                                    <span class="glyphicon glyphicon-menu-down more pull-right"></span>
+                                </div>
+
+                            </div>
+                        </a>
+                        <div class="panel-collapse collapse" id="second">
+                            <div class="panel-body">
+                                <p>Student payments allows to view the list of payment made by students..</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-info">
+                        <a href="#third" data-toggle="collapse" data-parent="#accordion">
+                            <div class="panel-heading">
+
+                                <div class="panel-title">
+                                    Room Checklist?
+                                    <span class="glyphicon glyphicon-menu-down more pull-right"></span>
+                                </div>
+
+                            </div>
+                        </a>
+                        <div class="panel-collapse collapse " id="third">
+                            <div class="panel-body">
+                                <p>It is where you can download and check a signed check list.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success " data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <p class="pageDesc">FAQ BUTTON or HELP ICON made with BOOTSTRAP.</p>
+
+    <p class="briefDesc">
+        Click on the <span style="color:wheat;">HELP ICON on the top-right corner</span> of the page to get a MODAL with Questions. And when you click on it a Drop down is provided with the Answers to them.
+    </p>
+
+    <p class="briefDesc">
+        To get rid of it click on the "close" button or the Close icon on the top or jus click anywhere outside the Modal.
+    </p>
+

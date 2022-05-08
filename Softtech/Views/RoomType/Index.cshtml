@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Softtech.Models.TblRoomType>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="row">
+        <div class="col-sm-12">
+            <h5 class="page-title">Rooms /</h5>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item active">List of rooms</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <p class="card-text">
+                        Under actions you may view and remove from the list if you are authorised to do so
+                    </p>
+                    <a asp-action="AddOrEdit" class="btn btn-outline-success" shadow-sm">
+                        <i class="fa fa-plus-square"></i> Add Room Type
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="datatable table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>Room Type</th>
+                                <th class="text-center">
+                                    <div class="table-action"> Actions</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="table-action">
+                                            <a asp-action="AddOrEdit" asp-route-id="@item.RoomTypeId" class="btn btn-sm bg-success-light">
+                                                <i class="fa fa-edit"></i> Update
+                                            </a>
+                                            <a asp-action="Delete" asp-route-id="@item.RoomTypeId" class="btn btn-sm bg-danger-light">
+                                                <i class="fa fa-times"></i> Remove
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

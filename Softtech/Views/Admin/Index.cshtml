@@ -1,0 +1,163 @@
+﻿@model Softtech.Models.Helper
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row pb-3">
+    <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="dash-widget-header">
+                    <span class="dash-widget-icon text-primary border-primary">
+                        <i class="fe fe-users"></i>
+                    </span>
+                    <div class="dash-count">
+                        <h3>@ViewBag.StudCounter</h3>
+                    </div>
+                </div>
+                <div class="dash-widget-info">
+                    <h6 class="text-muted">Students</h6>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar bg-primary w-50"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="dash-widget-header">
+                    <span class="dash-widget-icon text-success">
+                        <i class="fe fe-credit-card"></i>
+                    </span>
+                    <div class="dash-count">
+                        <h3>@ViewBag.RoomList</h3>
+                    </div>
+                </div>
+                <div class="dash-widget-info">
+
+                    <h6 class="text-muted">Rooms</h6>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar bg-success w-50"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="dash-widget-header">
+                    <span class="dash-widget-icon text-danger border-danger">
+                        <i class="fe fe-money"></i>
+                    </span>
+                    <div class="dash-count">
+                        <h3>@ViewBag.BookingList</h3>
+                    </div>
+                </div>
+                <div class="dash-widget-info">
+
+                    <h6 class="text-muted">Bookings</h6>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar bg-danger w-50"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="dash-widget-header">
+                    <span class="dash-widget-icon text-warning border-warning">
+                        <i class="fe fe-building"></i>
+                    </span>
+                    <div class="dash-count">
+                        <h3>@ViewBag.AvaRoomList</h3>
+                    </div>
+                </div>
+                <div class="dash-widget-info">
+
+                    <h6 class="text-muted">Available Rooms</h6>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar bg-warning w-50"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row pb-3">
+        @*<h4 style="margin-left:200px"> 2021 Bookings</h4>*@
+        <div class="col-md-6 text-center">
+            <div id="chart1"></div>
+        </div>
+        <div class="col-md-6">
+            <div id="chart2"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Pie Chart with Data Array:
+
+            var myArray = [['Months', 'Stats'],
+            ['January', { v: @Model.Data()[0], f: '@Model.Data()[0]%' }],
+            ['February', { v: @Model.Data()[1], f: '@Model.Data()[1]%' }],
+            ['March', { v: @Model.Data()[2], f: '@Model.Data()[2]%' }],
+            ['April', { v: @Model.Data()[3], f: '@Model.Data()[3]%' }],
+            ['May', { v: @Model.Data()[4], f: '@Model.Data()[4]%' }],
+            ['June', { v: @Model.Data()[5], f: '@Model.Data()[5]%' }],
+            ['July', { v: @Model.Data()[6], f: '@Model.Data()[6]%' }],
+            ['August', { v: @Model.Data()[7], f: '@Model.Data()[7]%' }],
+            ['September', { v: @Model.Data()[8], f: '@Model.Data()[8]%' }],
+            ['October', { v: @Model.Data()[9], f: '@Model.Data()[9]%' }],
+            ['November', { v: @Model.Data()[10], f: '@Model.Data()[10]%' }],
+            ['December', { v: @Model.Data()[11], f: '@Model.Data()[11]%' }],
+            ];
+
+            var data = google.visualization.arrayToDataTable(myArray, false);
+            var option = {
+                title: 'Booking Stats',
+                width: 600,
+                height: 500
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('chart1'));
+            chart.draw(data, option);
+
+            // Line Chart with Datas Array and Dat Array:
+
+            var data = google.visualization.arrayToDataTable([
+                ['Genre', 'Private Bursary', 'NSFAS Students'],
+                ['January', @Model.Datas()[0], @Model.Dat()[0]],
+                ['February', @Model.Datas()[1], @Model.Dat()[1]],
+                ['March', @Model.Datas()[2], @Model.Dat()[2]],
+                ['April', @Model.Datas()[3], @Model.Dat()[3]],
+                ['May', @Model.Datas()[4], @Model.Dat()[4]],
+                ['June', @Model.Datas()[5], @Model.Dat()[5] ],
+                ['July', @Model.Datas()[6], @Model.Dat()[6]],
+                ['August', @Model.Datas()[7], @Model.Dat()[7]],
+                ['September', @Model.Datas()[8], @Model.Dat()[8]],
+                ['October', @Model.Datas()[9], @Model.Dat()[9]],
+                ['November', @Model.Datas()[10], @Model.Dat()[10]],
+                ['December', @Model.Datas()[11], @Model.Dat()[11]]
+            ]);
+
+            chart = new google.visualization.LineChart(document.getElementById('chart2'));
+            chart.draw(data, option);
+        }
+
+
+    </script>
+}

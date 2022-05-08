@@ -1,0 +1,12 @@
+﻿@model Softtech.Models.TblBooking
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="BookingId" />
+    </form>
+</div>

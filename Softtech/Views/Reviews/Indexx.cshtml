@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Softtech.Models.TblReview>
+
+@{
+    ViewData["Title"] = "Indexx";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<h1>Indexx</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reply)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reply)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ReviewId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ReviewId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ReviewId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

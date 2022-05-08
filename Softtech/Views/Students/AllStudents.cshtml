@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Softtech.ViewModel.ViewModelUserRole>
+
+@{
+    ViewData["Title"] = "AllStudents";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="page-header">
+    <div class="row">
+        <div class="col-sm-12">
+            <h5 class="page-title">Students /</h5>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item active">List of students</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <p class="card-text">
+                        Under actions you may view and remove from the list if you are authorised to do so
+                    </p>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="datatable table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Student No</th>
+                                <th>Cellphone Number</th>
+                                <th>Address</th>
+                                <th class="text-center">
+                                    <div class="table-action"> Actions</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FirstName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LastName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StudentNo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CellNumber)
+                                    <td>
+                                        @item.AddressLine1, &nbsp;&nbsp;   @item.AddressLine2, &nbsp;&nbsp;  @item.CityId &nbsp;&nbsp;  @item.ZipCode
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="table-action">
+                                            <a asp-action="DetailUser" asp-controller="Users" asp-route-id="@item.Id" class="btn btn-sm bg-info-light">
+                                                <i class="fa fa-eye"></i> View Details
+                                            </a>
+                                            <a asp-action="EditUser" asp-controller="Users" asp-route-id="@item.Id" class="btn btn-sm bg-success-light">
+                                                <i class="fa fa-check"></i> Edit
+                                            </a>
+                                            <a asp-action="DetailUser" asp-route-id="@item.Id" class="btn btn-sm bg-danger-light">
+                                                <i class="fa fa-times"></i> Delete
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

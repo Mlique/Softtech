@@ -1,0 +1,183 @@
+﻿@model Softtech.ViewModel.BookingViewModel
+
+@{
+    ViewData["Title"] = "AddOrEdit";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+
+<div class="row  py-4">
+    <div class="breadcrumb-bar col-md-12">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-12 col-12">
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Students">Student</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Make Booking</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 py-4">
+        <form asp-action="AddOrEdit" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Room Type <span class="text-danger">*</span></label>
+                    <select asp-for="RoomTypeId" class="form-control floating" asp-items="@ViewBag.RoomTypeId">
+                        <option value="" class="option">Select room</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Start Year <span class="text-danger">*</span></label>
+                    <input asp-for="Year" class="form-control floating" />
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Sponsor</h4>
+                    <div class="form-group mb-0">
+                        <div id="pricing_select">
+                            <div class="form-inline">
+                                <label class="payment-radio paypal-option">
+                                    <input type="radio" name="StudentFundedBy" value="Private Bursary" data-toggle="collapse" data-target="#collapseTwo" checked>
+                                    <span class="checkmark"></span>
+                                    Private Bursary
+                                </label>
+                                <div>
+                                    <p>&nbsp;&nbsp; &nbsp;&nbsp;</p>
+                                </div>
+                                <label class="payment-radio credit-card-option">
+                                    <input type="radio" name="StudentFundedBy" value="NSFAS" data-toggle="collapse" data-target="#collapseTwo">
+                                    <span class="checkmark"></span>
+                                    NSFAS
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    @*<div class="form-group mb-0">
+                    <div id="pricing_select">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="price_free" name="rating_option" class="custom-control-input" value="price_free" checked>
+                            <label class="custom-control-label" for="price_free">NSFAS</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="price_custom" name="rating_option" value="custom_price" class="custom-control-input">
+                            <label class="custom-control-label" for="price_custom">Private Bursary</label>
+                        </div>
+                    </div>
+                </div>*@
+
+                    <div class="row custom_price_cont" id="collapseTwo">
+                        <div class="col-md-6">
+                            <label>Bursary Name <span class="text-danger">*</span></label>
+                            <input asp-for="BursaryName" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Contact Number <span class="text-danger">*</span></label>
+                            <input asp-for="ContactNumber" class="form-control">
+                        </div>
+                        <div class="payment-widget py-4">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                <p class="card-text">
+                                    If dont have a sponsor or bursary, you may pay using credit card or cash and provide the proof of payment
+                                </p>
+                            </div>
+                            <h4 class="card-title">Payment Method</h4>
+
+                            <div class="payment-list">
+
+                                <div class="form-group mb-0">
+                                    <div id="pricing_select">
+                                        <div class="form-inline">
+                                            <label class="payment-radio credit-card-option">
+                                                <input type="radio" name="PayMethod" value="Credit Card" data-toggle="collapse" data-target="#collapseOne" checked>
+                                                <span class="checkmark"></span>
+                                                Credit card
+                                            </label>
+                                            <div>
+                                                <p>&nbsp;&nbsp; &nbsp;&nbsp;</p>
+                                            </div>
+                                            <label class="payment-radio paypal-option">
+                                                <input type="radio" name="PayMethod" value="Cash" data-toggle="collapse" data-target="#collapseOne">
+                                                <span class="checkmark"></span>
+                                                Cash
+                                            </label>
+                                            <div>
+                                                <p>&nbsp;&nbsp; &nbsp;&nbsp;</p>
+                                            </div>
+                                            <label class="payment-radio paypal-option">
+                                                <input type="radio" name="PayMethod" value="" data-toggle="collapse" data-target="#collapseOne">
+                                                <span class="checkmark"></span>
+                                                Other
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row custom_price_cont" id="collapseOne">
+
+                                    <div class="col-md-12">
+                                        <label>Amount <span class="text-danger">*</span></label>
+                                        <input asp-for="PayAmount" class="form-control">
+                                    </div>
+                                    <div class="col-md-6 py-3">
+                                        <div class="form-group card-label">
+                                            <label for="card_name">Card Holder</label>
+                                            <input asp-for="CardHolder" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 py-3">
+                                        <div class="form-group card-label">
+                                            <label for="card_number">Card Number</label>
+                                            <input asp-for="CardNumber" class="form-control" placeholder="1234  5678  9876  5432">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <label for="expiry_month">Expiry Month</label>
+                                            <input asp-for="ExpiryMonth" class="form-control" placeholder="MM">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <label for="expiry_year">Expiry Year</label>
+                                            <input asp-for="ExpiryYear" class="form-control" placeholder="YY">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <label for="cvv">CVV</label>
+                                            <input asp-for="CVV" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="terms-accept py-3">
+                <div class="custom-checkbox">
+                    <input asp-for="TermsAndConditions" type="checkbox">
+                    <label for="terms_accept">I have read and accept <a href="#">Terms &amp; Conditions</a></label>
+                </div>
+            </div>
+            <div class="form-group submit-section mt-4">
+                <button type="submit" class="btn btn-primary submit-btn">
+                    Confirm and Pay
+                </button>
+                <a asp-action="Index" asp-controller="Students" class="btn btn-secondary submit-btn">
+                    <i class="fa fa-reload btn-icon-prepend"></i>
+                    Back
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

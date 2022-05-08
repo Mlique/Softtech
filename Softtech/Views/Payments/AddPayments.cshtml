@@ -1,0 +1,65 @@
+﻿@model Softtech.ViewModel.PaymentViewModel
+
+@{
+    ViewData["Title"] = "AddPayments";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+<div class="row  py-4">
+    <div class="breadcrumb-bar col-md-12">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-12 col-12">
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Students">Student</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Payment</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 py-4">
+        <form asp-action="AddPayments" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label>Amount Paid <span class="text-danger">*</span></label>
+                    <input asp-for="AmountPaid" class="form-control floating" />
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Proof Of Payment <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="zmdi zmdi-account"></i></div>
+                            </div>
+                            <div class="custom-file">
+                                <input asp-for="ProofOfPayPdf" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                        </div>
+                        <small class="form-text text-muted">Allowed JPG, PNG and PDF. Max size of 2MB</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group submit-section mt-4">
+                <button type="submit" class="btn btn-primary submit-btn">
+                    Submit
+                </button>
+                <a asp-action="Index" asp-controller="Students" class="btn btn-secondary submit-btn">
+                    <i class="fa fa-reload btn-icon-prepend"></i>
+                    Back
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });</script>
+}

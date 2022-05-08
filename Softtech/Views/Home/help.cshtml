@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewData["Title"] = "help";
+}
+
+<h2>Student Help</h2>
+<div class="navBar">
+    <h3 id="helpIcon" data-toggle="modal" data-target="#myModal">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-question-sign pull-right"></span></h3>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h4 class="modal-title" id="myModalLabel">Got some Queries? Let us Help you out</h4>
+                </center>
+            </div>
+            <div class="modal-body">
+
+                <!--Questions-->
+                <div id="accordion" class="panel-group">
+                    <div class="panel panel-info">
+
+                        <a href="#first" data-toggle="collapse" data-parent="#accordion">
+                            <div class="panel-heading">
+
+                                <div class="panel-title">
+                                    My Profile?
+                                    <span class="glyphicon glyphicon-menu-down more pull-right"></span>
+                                </div>
+
+                            </div>
+                        </a>
+                        <div class="panel-collapse collapse" id="first">
+                            <div class="panel-body">
+                                <p>On My Profile page you can change or edit your Profile. There is an upload button where you can also upload your profile picture..</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+
+                        <a href="#fourth" data-toggle="collapse" data-parent="#accordion">
+                            <div class="panel-heading">
+
+                                <div class="panel-title">
+                                    Check List?
+                                    <span class="glyphicon glyphicon-menu-down more pull-right"></span>
+                                </div>
+
+                            </div>
+                        </a>
+                        <div class="panel-collapse collapse" id="fourth">
+                            <div class="panel-body">
+                                <p>On the check list page is where you upload your completed and signed (by both the student and residence manager) check list document for your room, when you have checked everything in your room..</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <a href="#second" data-toggle="collapse" data-parent="#accordion">
+                            <div class="panel-heading">
+
+                                <div class="panel-title">
+                                    Make Booking?
+                                    <span class="glyphicon glyphicon-menu-down more pull-right"></span>
+                                </div>
+
+                            </div>
+                        </a>
+                        <div class="panel-collapse collapse" id="second">
+                            <div class="panel-body">
+                                <p>Make booking takes you to the booking page, where you can complete the booking form only if you have decided that you want to book your stay with us..</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                        <div class="panel panel-info">
+                            <a href="#third" data-toggle="collapse" data-parent="#accordion">
+                                <div class="panel-heading">
+
+                                    <div class="panel-title">
+                                        What was that?
+                                        <span class="glyphicon glyphicon-menu-down more pull-right"></span>
+                                    </div>
+
+                                </div>
+                            </a>
+                            <div class="panel-collapse collapse " id="third">
+                                <div class="panel-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success " data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <p class="pageDesc">FAQ BUTTON or HELP ICON made with BOOTSTRAP.</p>
+
+    <p class="briefDesc">
+        Click on the <span style="color:wheat;">HELP ICON on the top-right corner</span> of the page to get a MODAL with Questions. And when you click on it a Drop down is provided with the Answers to them.
+    </p>
+
+    <p class="briefDesc">
+        To get rid of it click on the "close" button or the Close icon on the top or jus click anywhere outside the Modal.
+    </p>
+    <div>
+
+

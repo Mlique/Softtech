@@ -1,0 +1,138 @@
+﻿@model Softtech.ViewModel.EditUserViewModel
+
+@{
+    ViewData["Title"] = "EditUser";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<div class="col-md-12">
+        <div class="card-body">
+            <form asp-action="EditCurrentUser" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="row form-row">
+                    <div class="col-12 col-md-12">
+                        <div class="form-group">
+                            <div class="change-avatar">
+                                @*<div>
+                                    <div class="profile-img">
+                                        <img src="~/profileImage/@Model.ProfileImage" alt="User" class="rounded-thumbnail"
+                                              asp-append-version="true" />
+                                    </div>
+                                </div>*@
+                                <div class="upload-img">
+                                    <div class="change-photo-btn">
+                                        <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                        @*<input type="file" class="upload">*@
+                                        <input asp-for="ProfileImage" accept="image/*" class="custom-file-input" id="customFile">
+                                        <label class="custom-file-label" for="customFile"></label>
+                                    </div>
+                                    <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Username <span class="text-danger">*</span></label>
+                                <input asp-for="Username" class="form-control" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email <span class="text-danger">*</span></label>
+                                <input asp-for="Email" class="form-control" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>First Name <span class="text-danger">*</span></label>
+                                <input asp-for="FirstName" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Last Name <span class="text-danger">*</span></label>
+                                <input asp-for="LastName" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input asp-for="CellNumber" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Date Of Birth</label>
+                                <input asp-for="DateOfBirth" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <select class="form-control select">
+                                    <option>Select</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Address Line 1</label>
+                                <input asp-for="AddressLine1" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Address Line 2</label>
+                                <input asp-for="AddressLine2" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">City</label>
+                                <input asp-for="City" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">State / Province</label>
+                                <input asp-for="Province" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Country</label>
+                                <input asp-for="Country" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Postal Code</label>
+                                <input asp-for="ZipCode" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-section">
+                    <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+                </div>
+            </form>
+
+        </div>
+    
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });</script>
+}
+

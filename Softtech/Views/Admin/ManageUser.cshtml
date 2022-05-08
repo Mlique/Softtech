@@ -1,0 +1,20 @@
+﻿@inject SignInManager<ApplicationUser> signInManager
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@if (signInManager.IsSignedIn(User))
+{
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <a asp-action="Index" asp-controller="UserRole" class="btn btn-secondary">Configure User Roles</a>
+    </div>
+}
+else
+{
+    <h1 class="display-4 text-center">Welcome</h1>
+    <h1 class="text-center">Please login to view more...</h1>
+}

@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Softtech.Models.TblBooking>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="page-header">
+    <div class="row">
+        <div class="col-sm-12">
+            <h5 class="page-title">Bookings /</h5>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item active">Pending Application</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <p class="card-text">
+                        Under actions you may view and remove from the list if you are authorised to do so
+                    </p>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="datatable table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Student</th>
+                                <th>Student Funded By:</th>
+                                <th>Room Type.</th>
+                                <th>ContactNumber</th>
+                                <th>Date</th>
+                                <th class="text-center">
+                                    <div class="table-action"> Actions</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Year)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Student.FullName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StudentFundedBy)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RoomType.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Student.PhoneNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Date)
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="table-action">
+                                            <a asp-action="AssignRoom" asp-route-id="@item.BookingId" class="btn btn-sm bg-success-light">
+                                                <i class="fa fa-check"></i> Accept
+                                            </a>
+                                            <a asp-action="Delete" asp-route-id="@item.BookingId" class="btn btn-sm bg-danger-light">
+                                                <i class="fa fa-times"></i> Decline
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

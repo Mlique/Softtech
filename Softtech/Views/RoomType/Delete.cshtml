@@ -1,0 +1,12 @@
+﻿@model Softtech.Models.TblRoomType
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="RoomTypeId" />
+    </form>
+</div>
